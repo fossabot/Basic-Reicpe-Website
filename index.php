@@ -20,7 +20,7 @@
 	while ($ricetta=$result->fetch_assoc()) disegnaAnteprima($ricetta);
 	echo '</DIV>';
 	echo '<DIV style="width:40%; border:1px; position:absolute; right:0">';
-	disegnaRicerca();
+	disegnaRicerca($dbase);
 	echo '</DIV>';
 ?>
 </BODY></HTML>

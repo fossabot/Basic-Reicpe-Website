@@ -1,7 +1,5 @@
 <?PHP
-	//include $_SERVER['DOCUMENT_ROOT'].'/lib/php/db_init.php';
-function disegnaRicerca(){
-	include $_SERVER['DOCUMENT_ROOT'].'/lib/php/db_init.php';
+function disegnaRicerca($dbase){
 	echo '<FORM ID="Ricerca" action="';
 	if($_SERVER['HTTPS']) echo "HTTPS://";
 	else echo "HTTP://";
