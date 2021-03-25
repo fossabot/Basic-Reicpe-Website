@@ -46,8 +46,9 @@
 	echo '<H2 align="center">Procedimento</H2><br><br><div>';
 	$result = $dbase->query('SELECT Immagine,Testo FROM procedimento WHERE Ricetta = "'.$ricetta["Nome"].'" ORDER BY Indice');
 	while ($passaggio=$result->fetch_assoc()){
-                 echo '<div><center><img width=50% src="'.$passaggio["Immagine"].'"></center><br><br>';
-		 echo '<div>'.$passaggio["Testo"].'</div></div>';
+		echo '<div>';
+                 if ($passaggio["Immagine"] != null and $passaggio["Immagine"] !== "") echo '<center><img width=50% src="'.$passaggio["Immagine"].'"></center><br><br>';
+		 echo '<div>'.$passaggio["Testo"].'</div>';
         }
         echo '</div>'
 
