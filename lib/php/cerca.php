@@ -4,14 +4,10 @@ function disegnaRicerca($dbase){
 	if($_SERVER['HTTPS']) echo "HTTPS://";
 	else echo "HTTP://";
 	echo $_SERVER['HTTP_HOST'].'/ricerca.php" method="POST"><H3>Cerca<BR></H3>';
-	echo '<DIV><DIV style:"float:left">';
-	echo '<LABEL>Nome</LABEL><BR>';
-	echo '<INPUT type="text" name="nome"></DIV>';
-	echo '<DIV style="float:right"><FIELDSET><LEGEND>Categorie</LEGEND>';
-	$result = $dbase->query("SELECT * FROM categoria");
-	while ($categoria = $result->fetch_assoc()) echo '<SPAN stype="white-space:nowrap"><LABEL>'.$categoria["Nome"].'</LABEL><INPUT type="checkbox" name="categorie[]" value="'.$categoria["Nome"].'"></SPAN>';
-	echo '</FIELDSET></DIV>';
-	echo '<DIV style="float:left"><BR><FIELDSET>';
+	echo '<DIV><TABLE>';
+	echo '<TR><TD colspan="2"><LABEL>Nome</LABEL><BR>';
+	echo '<INPUT type="text" name="nome"></TD><TR>';
+	echo '<TR><TD><FIELDSET>';
 	echo '<LABEL>Difficoltà</LABEL><BR>';
 	echo 'Min: <SELECT name="difficolta_min">';
 	for ($i = 1; $i<=5; $i++) echo '<OPTION value="'.$i.'">'.$i.'</OPTION>';
@@ -22,7 +18,11 @@ function disegnaRicerca($dbase){
 	echo 'Min: <INPUT type="number" name="preparazione_min"> Max: <INPUT type="number" name="preparazione_max"><BR>';
 	echo '<LABEL>Cottura (Minuti)</LABEL><BR>';
 	echo 'Min: <INPUT type="number" name="cottura_min"> Max: <INPUT type="number" name="cottura_max">';
-	echo '</FIELDSET></DIV>';
-	echo '</DIV><DIV style="bottom:0"><INPUT type="submit" value="Cerca"></DIV></FORM>';
+	echo '</FIELDSET></TD>';
+	echo '<TD><FIELDSET><LEGEND>Categorie</LEGEND>';
+        $result = $dbase->query("SELECT * FROM categoria");
+        while ($categoria = $result->fetch_assoc()) echo '<SPAN stype="white-space:nowrap"><LABEL>'.$categoria["Nome"].'</LABEL><INPUT type="checkbox" name="categorie[]" value="'.$categoria["Nome"].'"></SPAN>';
+	echo '</FIELDSET></TD></TR>';
+	echo '<TR><TD colspan="2" align="center"><INPUT type="submit" value="Cerca"></TD></TR></TABLE></FORM>';
 }
 ?>
