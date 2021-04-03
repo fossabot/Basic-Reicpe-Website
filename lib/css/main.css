@@ -1,0 +1,18 @@
+body {
+	background-color: #F4EFC9;
+}
+
+a{
+	color: black;
+	text-decoration: none;
+}
+
+a:hover{
+	text-decoration: underline;
+}
+
+#banner{
+	padding: 8px;
+	border: 1px solid black;
+	width: 40%
+}
